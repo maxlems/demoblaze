@@ -23,7 +23,7 @@ public class LoginValidationTests extends BaseTest {
         ExtentTest test = getTest();
 
         // Navigate to the login page
-        test.info(testDescription + " on " + Webbrowser);
+        test.info(testDescription + " on " + WebBrowser);
         test.info("Navigate to the login page: https://www.demoblaze.com/index.html#");
         driver.get("https://www.demoblaze.com/index.html");
 

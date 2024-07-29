@@ -4,9 +4,15 @@
         <listener class-name="org.example.utils.ExtentReportListener"/>
     </listeners>
     <test name="ChromeTests">
-        <parameter name="browser" value="chrome" />
+        <!-- <parameter name="browser" value="chrome" />
         <classes>
             <class name="org.example.tests.LoginValidationTests"/>
+        </classes> -->
+        <parameter name="browser" value="chrome" />
+        
+        <classes>
+            <class name="org.example.tests.MyStageRegressionTestsOngingLesson"/>
+            <class name="org.example.tests.MyStageRegressionTestsAdvanceLesson"/>
         </classes>
     </test>
 <!--    <test name="EdgeTests">-->
