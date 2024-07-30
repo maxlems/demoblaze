@@ -27,11 +27,24 @@ public class DriverManager {
                 options.addArguments("--remote-allow-origins=*");
                 System.setProperty("webdriver.chrome.driver",
                         System.getProperty("user.dir") + "/src/test/resources/webdriver/chromedriver.exe");
+                // Set the preferences to allow camera, microphone, and audio access
+                Map<String, Object> prefs = new HashMap<>();
+                prefs.put("profile.default_content_setting_values.media_stream_camera", 1);
+                prefs.put("profile.default_content_setting_values.media_stream_mic", 1);
+                prefs.put("profile.default_content_setting_values.media_stream", 1);
+                options.setExperimentalOption("prefs", prefs);
                 driver = new ChromeDriver(options);
             } else if (browser.equalsIgnoreCase("edge")) {
                 EdgeOptions options = new EdgeOptions();
                 System.setProperty("webdriver.edge.driver",
                         System.getProperty("user.dir") + "/src/test/resources/webdriver/msedgedriver.exe");
+
+                Map<String, Object> prefs = new HashMap<>();
+                prefs.put("profile.default_content_setting_values.media_stream_camera", 1);
+                prefs.put("profile.default_content_setting_values.media_stream_mic", 1);
+                prefs.put("profile.default_content_setting_values.media_stream", 1);
+                options.setExperimentalOption("prefs", prefs);
+
                 driver = new EdgeDriver(options);
             } else if (browser.equalsIgnoreCase("mac_safari")) {
                 SafariOptions safariOptions = new SafariOptions();

@@ -30,4 +30,31 @@ public class ActionKeywords {
 
         }
     }
+
+    public static void isTextPresence(WebElement element, String expectedInputValue) throws InterruptedException {
+
+        String actualValue = element.getText();
+        System.out.println("Actual value: " + actualValue);
+
+        try {
+            Assert.assertTrue(expectedInputValue.equals(actualValue));
+        } catch (Exception e) {
+            System.out.println("Actual value: " + actualValue);
+            Assert.fail();
+        }
+    }
+
+    public static void isInputValuePresence(WebElement element, String expectedInputValue) throws InterruptedException {
+
+        String actualValue = element.getAttribute("value");
+        System.out.println("Actual value: " + actualValue);
+
+        try {
+            Assert.assertTrue(expectedInputValue.equals(actualValue));
+        } catch (Exception e) {
+            System.out.println("Actual value: " + actualValue);
+            Assert.fail();
+        }
+    }
+
 }
