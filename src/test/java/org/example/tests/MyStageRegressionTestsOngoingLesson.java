@@ -322,7 +322,7 @@ public class MyStageRegressionTestsOngoingLesson extends BaseTest {
         StudentMyStagePage myStagePage = new StudentMyStagePage(driver);
         myStagePage.clickLeaveTheRoomButtonOnNavaBar();
         test.pass("Leave the room button is clicked");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         myStagePage.clickOutSideModal();
         test.pass("Out side modal is clicked");
