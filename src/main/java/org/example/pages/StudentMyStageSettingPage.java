@@ -18,16 +18,18 @@ public class StudentMyStageSettingPage {
 
     // Video Input
     private final By videoInput = By.cssSelector(".camera-selection .el-input__inner");
-    private final By videoInputOptions = By.cssSelector("[x-placement] .el-select-dropdown__list li");
+    private final By videoInputOption1 = By.cssSelector("[x-placement] .el-select-dropdown__list li:nth-of-type(1)");
 
     // Audio Input Mic
     private final By audioInput = By.cssSelector(".mic-selection .el-input__inner");
-    private final By audioInputOptions = By.cssSelector("[x-placement] .el-select-dropdown__list li");
+    private final By audioInputOption1 = By.cssSelector(
+            "body > div:nth-of-type(3) .el-scrollbar__view.el-select-dropdown__list > .el-select-dropdown__item");
     private final By waveIcon = By.cssSelector(".right-side canvas");
 
     // Audio Output speaker
     private final By audioOutput = By.cssSelector(".speaker-selection .el-input__inner");
-    private final By audioOutputOptions = By.cssSelector("[x-placement] .el-select-dropdown__list li");
+    private final By audioOutputOption1 = By
+            .cssSelector("div:nth-of-type(4) .el-scrollbar__view.el-select-dropdown__list > .el-select-dropdown__item");
 
     public StudentMyStageSettingPage(WebDriver driver) {
         this.driver = driver;
@@ -40,21 +42,11 @@ public class StudentMyStageSettingPage {
         driver.findElement(videoInput).click();
     }
 
-    public void selectVideoInputOption(String value) throws InterruptedException {
+    public void selectVideoInputOption() throws InterruptedException {
         Duration timeoutDuration = Duration.ofSeconds(10);
         WebDriverWait wait = new WebDriverWait(driver, timeoutDuration);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(videoInputOptions));
-
-        List<WebElement> elements = driver.findElements(videoInputOptions);
-
-        for (WebElement element : elements) {
-            System.out.println(element.getText());
-            if ((element.getText().equals(value))) {
-                element.click();
-            }
-        }
-
-        Thread.sleep(3000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(videoInputOption1));
+        driver.findElement(videoInputOption1).click();
     }
 
     public void isVideoInputCorrectValue(String videoInputText) throws InterruptedException {
@@ -77,17 +69,8 @@ public class StudentMyStageSettingPage {
     public void selectAudioInputOption(String value) throws InterruptedException {
         Duration timeoutDuration = Duration.ofSeconds(10);
         WebDriverWait wait = new WebDriverWait(driver, timeoutDuration);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(audioInputOptions));
-
-        List<WebElement> elements = driver.findElements(audioInputOptions);
-
-        for (WebElement element : elements) {
-            System.out.println(element.getText());
-            if ((element.getText().equals(value))) {
-                element.click();
-            }
-        }
-        Thread.sleep(3000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(audioInputOption1));
+        driver.findElement(audioInputOption1).click();
     }
 
     public void isAudioInputCorrectValue(String audioInputText) throws InterruptedException {
