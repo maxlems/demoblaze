@@ -11,15 +11,20 @@
         <parameter name="browser" value="chrome" />
         
         <classes>
-            <class name="org.example.tests.MyStageRegressionTestsOngingLesson"/>
+            <class name="org.example.tests.MyStageRegressionTestsOngoingLesson"/>
             <class name="org.example.tests.MyStageRegressionTestsAdvanceLesson"/>
 
-
-            <!-- <class name="org.example.tests.MyStageRegressionTestsAdvanceLesson">
+<!-- 
+            <class name="org.example.tests.MyStageRegressionTestsAdvanceLesson">
                 <methods>
                     <include name="SK2_T334_UserCanSelectVideoInputDeviceTheyUse"></include>
                     <include name="SK2_T335_UserCanSelectAudioInputDeviceTheyUse"></include>
                     <include name="SK2_T336_UserCanPreviewGraphicalAudioInputLevels"></include>
+                </methods>
+            </class> -->
+            <!-- <class name="org.example.tests.MyStageRegressionTestsOngoingLesson">
+                <methods>
+                    <include name="SK2_T350_StudentCanLeaveTheMyStageSessionDuringBookingTime"></include>
                 </methods>
             </class> -->
             

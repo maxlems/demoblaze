@@ -5,6 +5,7 @@ import static org.example.utils.TestUtils.captureScreenShot;
 
 import org.example.pages.StudentHomePage;
 import org.example.pages.StudentLoginPage;
+import org.example.pages.StudentMyStageSettingPage;
 import org.example.utils.ActionKeywords;
 import org.openqa.selenium.WebDriver;
 
@@ -33,7 +34,9 @@ public class StudentActions {
         test.info("Student click the enter my stage button in Homepage");
         homePage.clickEnterMyStageButton();
         ActionKeywords actionKeywords = new ActionKeywords(driver);
+        Thread.sleep(3000);
         actionKeywords.switchTab(1);
+        Thread.sleep(3000);
         path = captureScreenShot(driver, "MyStageSetting_");
         test.pass(MediaEntityBuilder.createScreenCaptureFromPath(path, "MyStageSetting").build());
         test.pass("Student is in MyStageSetting Page");
