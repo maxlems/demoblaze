@@ -40,6 +40,8 @@ public class MyStageRegressionTestsOngoingLesson extends BaseTest {
         // Need database testing to check if it is agora webRTC
     }
 
+    @Test
+    @Parameters("browser")
     public void SK2_T333_In_the_MyStage_room_ensure_that_AWS_Chime_is_the_utilized_RTC() throws Exception {
         ExtentTest test = getTest();
         String testDescription = "SK2_T396 In the MyStage room ensure that AWS Chime is the utilized RTC";
@@ -54,6 +56,8 @@ public class MyStageRegressionTestsOngoingLesson extends BaseTest {
         // Need database testing to check if it is AWS chime webRTC
     }
 
+    @Test
+    @Parameters("browser")
     public void SK2_T395_In_the_MyStage_room_ensure_that_Skyway_is_the_utilized_RTC() throws Exception {
         ExtentTest test = getTest();
         String testDescription = "SK2_T396 In the MyStage room ensure that Skyway is the utilized RTC";
@@ -228,11 +232,99 @@ public class MyStageRegressionTestsOngoingLesson extends BaseTest {
         test.pass("Student Successfully entered MyStage");
 
         StudentMyStagePage myStagePage = new StudentMyStagePage(driver);
-        myStagePage.clickLeaveTheRoomOnNavaBar();
+        myStagePage.clickLeaveTheRoomButtonOnNavaBar();
         test.pass("Leave the room button is clicked");
         Thread.sleep(3000);
 
-        myStagePage.clickLeaveTheRoom();
+        myStagePage.clickLeaveTheRoomButton();
         test.pass("Leave the room button is clicked");
+    }
+
+    @Test
+    @Parameters("browser")
+    public void SK2_T351_StudentCanBackOutTheMyStageSessionDuringBookingTime() throws Exception {
+        ExtentTest test = getTest();
+        String testDescription = "SK2_T351 Student Can Back Out The MyStage Session During Booking Time";
+
+        // Navigate to the student login page
+        test.info(testDescription + " on " + WebBrowser);
+        test.info("Navigate to the login page: " + myStageUrl);
+        driver.get(myStageUrl);
+
+        // Perform login
+        StudentLoginPage loginPage = new StudentLoginPage(driver);
+        test.info("Verify login with username: " + studentEmail + " and password: " + studentPassword);
+
+        loginPage.login(studentEmail, studentPassword);
+        String path = captureScreenShot(driver, "Login_");
+        test.pass(MediaEntityBuilder.createScreenCaptureFromPath(path, "Login Successful").build());
+
+        StudentHomePage homePage = new StudentHomePage(driver);
+        test.info("Student click the enter my stage button in Homepage");
+        homePage.clickEnterMyStageButton();
+        ActionKeywords actionKeywords = new ActionKeywords(driver);
+        actionKeywords.switchTab(1);
+        path = captureScreenShot(driver, "MyStageSetting_");
+        test.pass(MediaEntityBuilder.createScreenCaptureFromPath(path, "MyStageSetting").build());
+        test.pass("Student is in MyStageSetting Page");
+
+        StudentMyStageSettingPage myStageSettingPage = new StudentMyStageSettingPage(driver);
+        test.pass("Student click the enter my stage button in MyStageSetting Page");
+        myStageSettingPage.clickEnterMyStageButton();
+        path = captureScreenShot(driver, "MyStage Page");
+        test.pass(MediaEntityBuilder.createScreenCaptureFromPath(path, "MyStagePage").build());
+        test.pass("Student Successfully entered MyStage");
+
+        StudentMyStagePage myStagePage = new StudentMyStagePage(driver);
+        myStagePage.clickLeaveTheRoomButtonOnNavaBar();
+        test.pass("Leave the room button is clicked");
+        Thread.sleep(3000);
+
+        myStagePage.clickBackToLessonButton();
+        test.pass("Back to lesson button is clicked");
+    }
+
+    @Test
+    @Parameters("browser")
+    public void SK2_T352_StudentCanBackOutTheMyStageSessionByClickingOutsideMenu() throws Exception {
+        ExtentTest test = getTest();
+        String testDescription = "SK2_T352 Student Can Back Out The MyStage Session By Clicking Outside Menu";
+
+        // Navigate to the student login page
+        test.info(testDescription + " on " + WebBrowser);
+        test.info("Navigate to the login page: " + myStageUrl);
+        driver.get(myStageUrl);
+
+        // Perform login
+        StudentLoginPage loginPage = new StudentLoginPage(driver);
+        test.info("Verify login with username: " + studentEmail + " and password: " + studentPassword);
+
+        loginPage.login(studentEmail, studentPassword);
+        String path = captureScreenShot(driver, "Login_");
+        test.pass(MediaEntityBuilder.createScreenCaptureFromPath(path, "Login Successful").build());
+
+        StudentHomePage homePage = new StudentHomePage(driver);
+        test.info("Student click the enter my stage button in Homepage");
+        homePage.clickEnterMyStageButton();
+        ActionKeywords actionKeywords = new ActionKeywords(driver);
+        actionKeywords.switchTab(1);
+        path = captureScreenShot(driver, "MyStageSetting_");
+        test.pass(MediaEntityBuilder.createScreenCaptureFromPath(path, "MyStageSetting").build());
+        test.pass("Student is in MyStageSetting Page");
+
+        StudentMyStageSettingPage myStageSettingPage = new StudentMyStageSettingPage(driver);
+        test.pass("Student click the enter my stage button in MyStageSetting Page");
+        myStageSettingPage.clickEnterMyStageButton();
+        path = captureScreenShot(driver, "MyStage Page");
+        test.pass(MediaEntityBuilder.createScreenCaptureFromPath(path, "MyStagePage").build());
+        test.pass("Student Successfully entered MyStage");
+
+        StudentMyStagePage myStagePage = new StudentMyStagePage(driver);
+        myStagePage.clickLeaveTheRoomButtonOnNavaBar();
+        test.pass("Leave the room button is clicked");
+        Thread.sleep(3000);
+
+        myStagePage.clickOutSideModal();
+        test.pass("Out side modal is clicked");
     }
 }

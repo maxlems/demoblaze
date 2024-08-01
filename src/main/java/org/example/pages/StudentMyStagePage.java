@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -24,6 +25,7 @@ public class StudentMyStagePage {
 
     private final By navbarLeaveRoomButton = By.xpath("//div[@class='lesson_exit']//a[@type='primary']");
     private final By leaveRoomButton = By.xpath("//div[@role='dialog']//span[@class='dialog-footer']/button[2]");
+    private final By backToLessonButton = By.cssSelector(".exit-button-no");
 
     public StudentMyStagePage(WebDriver driver) {
         this.driver = driver;
@@ -81,18 +83,30 @@ public class StudentMyStagePage {
         driver.findElement(videoReconnectButton).click();
     }
 
-    public void clickLeaveTheRoomOnNavaBar() {
+    public void clickLeaveTheRoomButtonOnNavaBar() {
         Duration timeoutDuration = Duration.ofSeconds(5);
         WebDriverWait wait = new WebDriverWait(driver, timeoutDuration); // Wait upto 10 seconds
         wait.until(ExpectedConditions.elementToBeClickable(navbarLeaveRoomButton));
         driver.findElement(navbarLeaveRoomButton).click();
     }
 
-    public void clickLeaveTheRoom() {
+    public void clickLeaveTheRoomButton() {
         Duration timeoutDuration = Duration.ofSeconds(5);
         WebDriverWait wait = new WebDriverWait(driver, timeoutDuration); // Wait upto 10 seconds
         wait.until(ExpectedConditions.elementToBeClickable(leaveRoomButton));
         driver.findElement(leaveRoomButton).click();
+    }
+
+    public void clickBackToLessonButton() {
+        Duration timeoutDuration = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeoutDuration); // Wait upto 10 seconds
+        wait.until(ExpectedConditions.elementToBeClickable(backToLessonButton));
+        driver.findElement(backToLessonButton).click();
+    }
+
+    public void clickOutSideModal() {
+        Actions action = new Actions(driver);
+        action.moveByOffset(3, 3).click().build().perform();
     }
 
 }
