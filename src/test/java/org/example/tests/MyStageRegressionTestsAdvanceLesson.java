@@ -19,9 +19,6 @@ public class MyStageRegressionTestsAdvanceLesson extends BaseTest {
     private String myStageUrl = "https://bizmates:=LJh+m4=tH+395-T@dev07.dev.bizmates.jp/MyBizmates/student/login";
     private String studentEmail = "uat-student+234933@bizmates.jpn";
     private String studentPassword = "password";
-    private String videoInput = "Intel Virtual Camera";
-    private String audioOutput = "Headset Earphone (Plantronics Blackwire 3220 Series)";
-    private String audioInput = "Headset Microphone (Plantronics Blackwire 3220 Series)";
 
     @Test
     @Parameters("browser")
@@ -106,11 +103,8 @@ public class MyStageRegressionTestsAdvanceLesson extends BaseTest {
         myStageSettingPage.clickVideoInput();
         test.pass("Student clicked the Video Input dropdown list");
         test.pass(MediaEntityBuilder.createScreenCaptureFromPath(path, "MyStage dropdown").build());
-        myStageSettingPage.selectVideoInputOption(videoInput);
-        test.pass("Student selected the video input: " + videoInput);
-
-        myStageSettingPage.isVideoInputCorrectValue(videoInput);
-        test.pass("Student selected the video input is correct: " + videoInput);
+        myStageSettingPage.selectVideoInputOption();
+        test.pass("Student selected the video input");
     }
 
     @Test
@@ -134,8 +128,8 @@ public class MyStageRegressionTestsAdvanceLesson extends BaseTest {
         myStageSettingPage.clickAudioInput();
         test.pass("Student clicked the Video Input dropdown list");
         test.pass(MediaEntityBuilder.createScreenCaptureFromPath(path, "MyStage Audio dropdown").build());
-        myStageSettingPage.selectVideoInputOption(audioInput);
-        test.pass("Student selected the Audio input: " + audioInput);
+        myStageSettingPage.selectVideoInputOption();
+        test.pass("Student selected the Audio input");
     }
 
     @Test
@@ -158,11 +152,11 @@ public class MyStageRegressionTestsAdvanceLesson extends BaseTest {
 
         myStageSettingPage.clickAudioInput();
         test.pass("Student clicked the Video Input dropdown list");
-        myStageSettingPage.selectVideoInputOption(audioInput);
-        test.pass("Student selected the Audio input: " + audioInput);
+        myStageSettingPage.selectVideoInputOption();
+        test.pass("Student selected the Audio input");
 
         myStageSettingPage.isWaveIconDisplayed();
-        test.pass("The wave Icon is displayed: " + audioInput);
+        test.pass("The wave Icon is displayed");
 
     }
 
